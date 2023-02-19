@@ -297,9 +297,9 @@ jobs:
               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
               unzip awscliv2.zip
               sudo ./aws/install
-      - run: 
-          command: . ./ourlongscript.sh
-          no_output_timeout: 7m
+      # - run: 
+      #     command: . ./ourlongscript.sh
+          
 
       - run:
           name: Run migrations
@@ -315,6 +315,7 @@ jobs:
 
             cat /home/circleci/.npm/_logs/2023-02-19T19_21_47_046Z-debug.log
 
+          no_output_timeout: 7m
 
 
       - run:
