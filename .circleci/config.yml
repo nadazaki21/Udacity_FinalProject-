@@ -317,7 +317,7 @@ jobs:
 
             cat /home/circleci/.npm/_logs/2023-02-19T19_21_47_046Z-debug.log
 
-             cd /home/circleci/project/backend
+            cd /home/circleci/project/backend
 
        - run:
           name: Run migrations
