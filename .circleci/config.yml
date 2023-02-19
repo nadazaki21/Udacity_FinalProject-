@@ -27,16 +27,14 @@ commands:
     steps:
       - run:
           name: Revert migrations
-          # Add when this will run
+          when: on_fail
           command: |
-            # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS = 1
-            if(( $SUCCESS==1 )); 
+            Check=$(curl --insecure  https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5})
+            if (( $Check == 1 ));
             then
-            #  cd ~/project/backend
-            #  npm install
-            #  Add revert code here. You can find this in the Getting Started section.
-              exit 1
+              cd ~/project/backend
+              npm install
+              npm run migration:revert
             fi
             
 jobs:
@@ -320,20 +318,7 @@ jobs:
       - run:
           command: npm --prefix /home/circleci/project/backend run migrations > migrations_dump.txt
           no_output_timeout: 7m
-            
-            
-
-            
-          
-          
-            
-
-          
-
-     
-
-    
-
+  
           
 
 
@@ -353,6 +338,8 @@ jobs:
       - destroy_environment_backend
 
       - destroy_environment_frontend
+
+      - revert-migrations
 
   
 

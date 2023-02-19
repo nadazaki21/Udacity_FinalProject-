@@ -26,11 +26,7 @@ Resources:
           FromPort: 5432
           ToPort: 5432
           CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
-          - IpProtocol: tcp
-            FromPort: 0
-            ToPort: 65535
-            CidrIp: 0.0.0.0/0   
+       
 
 
   EC2Instance:
