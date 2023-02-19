@@ -79,7 +79,7 @@ jobs:
           key: backend-build
       
       - run: pwd 
-      - run: cd /home/circleci/project/backend   
+      - run: ls -la /home/circleci/project/backend   
       - run: pwd 
       - run: ls -la 
   test-frontend:
