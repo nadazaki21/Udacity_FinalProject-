@@ -320,14 +320,14 @@ jobs:
             cd /home/circleci/project/backend
 
       - run:
-        name: Run migrations
-        no_output_timeout: 7m
-        command: |
-          
+          name: Run migrations
+          no_output_timeout: 7m
+          command: |
+            
 
-          npm run migrations > migrations_dump.txt
+            npm run migrations > migrations_dump.txt
 
-          cat /home/circleci/.npm/_logs/2023-02-19T19_21_47_046Z-debug.log
+            cat /home/circleci/.npm/_logs/2023-02-19T19_21_47_046Z-debug.log
 
     
 
@@ -335,14 +335,14 @@ jobs:
 
 
       - run:
-            name: Send migration status to kvdb.io OR memstash.io
-            command: |   
-                if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
-                then
-                 curl https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5} -d 1  
-                    
-                fi
-                curl --insecure  https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5}      
+          name: Send migration status to kvdb.io OR memstash.io
+          command: |   
+              if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
+              then
+                curl https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5} -d 1  
+                  
+              fi
+              curl --insecure  https://kvdb.io/95oHjy4Yvcu4f6gDXNZr6j/migration_$\{CIRCLE_WORKFLOW_ID:0:5}      
 
           
        
