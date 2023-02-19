@@ -75,13 +75,17 @@ jobs:
             npm install
             npm run build
 
-      - save_cache:
-          paths: [backend/node_modules]
-          key: backend-build
+      
       
       - run: pwd 
       - run: ls -la /home/circleci/project/backend 
-      - run: ls -la /home/circleci/project/backend/node_modules/.bin/  
+      - run: ls -la /home/circleci/project/backend/node_modules/.bin/ 
+
+      - save_cache:
+          key: backend-build 
+          paths: 
+            - backend/node_modules
+          
       
 
   test-frontend:
@@ -278,7 +282,8 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build]
+          keys: 
+            - backend-build
 
       - run:
           name: Install dependencies
@@ -294,11 +299,9 @@ jobs:
           command: |
             cd /home/circleci/project/backend
             pwd 
+
+            ls -la /home/circleci/project/backend
             
-            ls -la /home/circleci/project/backend
-            npm cache clean --force
-            rm -Rf node_modules
-            ls -la /home/circleci/project/backend
 
             npm install
             npm run migrations > migrations_dump.txt
@@ -489,4 +492,6 @@ workflows:
       #     requires: [cloudfront-update]
 
 
-           
+          #  npm cache clean --force
+          #   rm -Rf node_modules
+          #   ls -la /home/circleci/project/backend
