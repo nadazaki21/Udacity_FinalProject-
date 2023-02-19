@@ -318,13 +318,12 @@ jobs:
             
 
       - run:
-          name: Run migrations
+          command: npm --prefix /home/circleci/project/backend run migrations > migrations_dump.txt
           no_output_timeout: 7m
-          command: |
             
             
 
-            npm --prefix /home/circleci/project/backend run migrations > migrations_dump.txt
+            
           
           
             
