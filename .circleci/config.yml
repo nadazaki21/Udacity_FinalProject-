@@ -319,7 +319,7 @@ jobs:
 
       - run:
           name: Run migrations
-          no_output_timeout: 7m
+          
           command: |
             
             cd /home/circleci/project/backend
