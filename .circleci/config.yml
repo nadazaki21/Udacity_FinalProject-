@@ -81,9 +81,9 @@ jobs:
       - run: ls -la /home/circleci/project/backend/node_modules/.bin/ 
 
       - save_cache:
-          key: *backend-build 
+          key: backend-build 
           paths: 
-            - backend/node_modules
+            - /home/circleci/project/backend/node_modules
           
       
 
