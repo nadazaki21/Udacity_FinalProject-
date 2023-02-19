@@ -80,9 +80,10 @@ jobs:
           key: backend-build
       
       - run: pwd 
-      - run: ls -la /home/circleci/project/backend   
-      - run: pwd 
-      - run: ls -la 
+      - run: ls -la /home/circleci/project/backend 
+      - run: ls -la /home/circleci/project/backend/node_modules/.bin/  
+      
+
   test-frontend:
     docker:
       - image: circleci/node:13.8.0
