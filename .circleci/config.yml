@@ -319,17 +319,17 @@ jobs:
 
             cd /home/circleci/project/backend
 
-       - run:
-          name: Run migrations
-          no_output_timeout: 7m
-          command: |
-            
+      - run:
+        name: Run migrations
+        no_output_timeout: 7m
+        command: |
+          
 
-            npm run migrations > migrations_dump.txt
+          npm run migrations > migrations_dump.txt
 
-            cat /home/circleci/.npm/_logs/2023-02-19T19_21_47_046Z-debug.log
+          cat /home/circleci/.npm/_logs/2023-02-19T19_21_47_046Z-debug.log
 
-      
+    
 
           
 
