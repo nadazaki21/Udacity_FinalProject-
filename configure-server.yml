@@ -18,10 +18,7 @@
       pause:
         seconds: 120     # 120 seconds is enough
 
-    - name: "install python for Ansible."
-      raw: apt -y update && apt install -y python3
-      when: check_python.rc != 0
-  
+    
 
 
 
